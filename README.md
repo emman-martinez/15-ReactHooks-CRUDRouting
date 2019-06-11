@@ -9,3 +9,6 @@ ReactJS: Aplicación CRUD con Routing
 '> npm install --save react-router-dom'
 ### json-server
 '> npm install -g json-server'
+
+### sweetalert2
+'> npm install sweetalert2 --save
