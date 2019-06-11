@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Error from './Error';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { withRouter } from 'react-router-dom';
 
-function AgregarProducto() {
+function AgregarProducto({history}) {
 
     // state
     const [ nombrePlatillo, guardarNombre ] = useState('');
@@ -15,7 +18,7 @@ function AgregarProducto() {
     }
 
     // Validar Formulario 
-    const agregarProducto = (e) => {
+    const agregarProducto = async (e) => {
         e.preventDefault();
 
         if(nombrePlatillo === '' || precioPlatillo === '' || categoria === '') {
@@ -26,6 +29,31 @@ function AgregarProducto() {
         guardarError(false);
 
         // Crear el Nuevo Producto
+        try {
+            const resultado = await axios.post('http://localhost:4000/restaurant', {
+                nombrePlatillo,
+                precioPlatillo,
+                categoria,
+            });
+            console.log(resultado);
+            if(resultado.status === 201) {
+                Swal.fire(
+                    'Producto Creado',
+                    'El producto se creo correctamemte',
+                    'success'
+                  )
+            }
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Hubo un error, vuelve a intentarlo',
+              })
+        }
+
+        // Redirigir al usuario a productos
+        history.push('/productos');
     }
 
     return(
@@ -120,4 +148,4 @@ function AgregarProducto() {
     )
 }
 
-export default AgregarProducto;
+export default withRouter(AgregarProducto);
