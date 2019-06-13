@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import ProductoLista from './ProductoLista';
 
-function Producto() {
+function Producto(props) {
+
+    const { productos, guardarRecargarProductos } = props;
     return(
-        <h1 className="text-center">Datos del Producto</h1>
+        <Fragment>
+            <h1 className="text-center">Productos</h1>
+            <ul className="list-group mt-5">
+                {productos.map(producto => (
+                    <ProductoLista
+                    key={producto.id}
+                    producto={producto}
+                    guardarRecargarProductos={guardarRecargarProductos}
+                    ></ProductoLista>
+                ))}
+               
+            </ul>
+        </Fragment>
     )
 }
 
