@@ -12,18 +12,24 @@ import './../css/App.css';
 function App() {
 
   const [ productos, guardarProductos ] = useState([]);
+  const [ recargarProductos, guardarRecargarProductos ] = useState(true);
 
   useEffect(() => {
-    const consultarApi = async () => {
-      // Consultar la API de json-server
-      const resultado = await axios.get('http://localhost:4000/restaurant');
-      const { data } = resultado;
-      // console.log(data);
-      // Colocarlo en el state
-      guardarProductos(data);
+    if(recargarProductos === true) {
+      const consultarApi = async () => {
+        // Consultar la API de json-server
+        const resultado = await axios.get('http://localhost:4000/restaurant');
+        const { data } = resultado;
+        // console.log(data);
+        // Colocarlo en el state
+        guardarProductos(data);
+      }
+      consultarApi();
+
+      // Cambiar a false la recarga de los productos
+      guardarRecargarProductos(false);
     }
-    consultarApi();
-  }, []);
+  }, [recargarProductos]);
 
   return (
     <Router>
@@ -34,18 +40,39 @@ function App() {
           {/*<Route exact path="/productos" component={Productos}></Route>*/}
           { /* Route: Productos */}
           <Route  exact path="/productos" 
-                  render={ () => (
-                  <Productos
-                              productos={productos}
-                  ></Productos>
-          ) }>
-          </Route>
+                    render={ () => (
+                      <Productos
+                                  productos={productos}
+                      ></Productos>
+                    )}
+          ></Route>
           { /* Route: AgregarProducto */}
-          <Route exact path="/nuevo-producto" component={AgregarProducto}></Route>
+          <Route exact path="/nuevo-producto" 
+                  render={() => (
+                    <AgregarProducto
+                                      guardarRecargarProductos={guardarRecargarProductos}
+                    ></AgregarProducto>
+                  )}
+          ></Route>
           { /* Route: Producto */}
           <Route exact path="/productos/:id" component={Producto}></Route>
           { /* Route: EditarProducto */}
-          <Route exact path="/productos/editar/:id" component={EditarProducto}></Route>
+          <Route exact path="/productos/editar/:id"
+                  render={props => {
+                    // console.log(typeof props.match.params.id)
+                    // Tomar el ID del producto
+                    const idProducto = parseInt(props.match.params.id);
+                    // El producto que se pasa al state
+                    const producto = productos.filter(producto => producto.id === idProducto);
+
+                    return(
+                      <EditarProducto
+                                      producto={producto[0]}
+                                      guardarRecargarProductos={guardarRecargarProductos}
+                      ></EditarProducto>
+                      )
+                  }}
+          ></Route>
         </Switch>
       </main>
       <p className="mt-4 p2 text-center">Todos los Derechos Reservados</p>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 
-function AgregarProducto({history}) {
+function AgregarProducto({history, guardarRecargarProductos}) {
 
     // state
     const [ nombrePlatillo, guardarNombre ] = useState('');
@@ -39,9 +39,9 @@ function AgregarProducto({history}) {
             if(resultado.status === 201) {
                 Swal.fire(
                     'Producto Creado',
-                    'El producto se creo correctamemte',
+                    'El producto se creó correctamemte',
                     'success'
-                  )
+                )
             }
         } catch (error) {
             console.log(error);
@@ -49,10 +49,11 @@ function AgregarProducto({history}) {
                 type: 'error',
                 title: 'Oops...',
                 text: 'Hubo un error, vuelve a intentarlo',
-              })
+            })
         }
 
         // Redirigir al usuario a productos
+        guardarRecargarProductos(true);
         history.push('/productos');
     }
 
