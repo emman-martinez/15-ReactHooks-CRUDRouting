@@ -15,7 +15,6 @@ function Producto(props) {
                     guardarRecargarProductos={guardarRecargarProductos}
                     ></ProductoLista>
                 ))}
-               
             </ul>
         </Fragment>
     )

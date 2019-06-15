@@ -2,39 +2,27 @@
   "restaurant": [
     {
       "precioPlatillo": "150",
-      "nombrePlatillo": "Cheesecake",
+      "nombrePlatillo": "Cheescake",
       "categoria": "postre",
       "id": 1
     },
     {
       "precioPlatillo": "300",
-      "nombrePlatillo": "Rib Eye 300g",
+      "nombrePlatillo": "Rib Eye 250g",
       "categoria": "cortes",
-      "id": 2
-    },
-    {
-      "nombrePlatillo": "Ensalada Cesar",
-      "precioPlatillo": "80",
-      "categoria": "ensalada",
       "id": 3
     },
     {
-      "precioPlatillo": "120",
-      "nombrePlatillo": "Ensalada de Pollo y Verduras",
-      "categoria": "ensalada",
+      "precioPlatillo": "100",
+      "nombrePlatillo": "Agua de Limón",
+      "categoria": "bebida",
       "id": 4
     },
     {
-      "nombrePlatillo": "Ensalada Rusa",
-      "precioPlatillo": "50",
-      "categoria": "ensalada",
-      "id": 5
-    },
-    {
-      "nombrePlatillo": "Refresco",
-      "precioPlatillo": "18",
+      "precioPlatillo": "100",
+      "nombrePlatillo": "Agua de Frutas",
       "categoria": "bebida",
-      "id": 6
+      "id": 5
     }
   ]
 }

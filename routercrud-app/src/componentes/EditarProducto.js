@@ -20,10 +20,10 @@ function EditarProducto(props) {
         e.preventDefault();
 
         // ***** Validación *****
-        const nuevoNombrePlatillo = precioPlatilloRef.current.value;
-        const nuevoPrecioPlatillo = nombrePlatilloRef.current.value;
+        const nuevoNombrePlatillo = nombrePlatilloRef.current.value;
+        const nuevoPrecioPlatillo = precioPlatilloRef.current.value;
 
-        if (nuevoNombrePlatillo === '' || nuevoPrecioPlatillo === '' || categoria === '') {
+        if (nuevoNombrePlatillo === '' || nuevoPrecioPlatillo === '') {
             guardarError(true);
             return;
         }
@@ -31,7 +31,7 @@ function EditarProducto(props) {
         
         // ***** Revisar si cambio la categoría de lo contrario asignar el mismo valor *****
         let categoriaPlatillo = (categoria === '') ? producto.categoria : categoria;
-        // console.log(categoriaPlatillo);
+        console.log(categoriaPlatillo);
 
         // ***** Obtener los valores del formulario *****
 

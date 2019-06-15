@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-function ProductoLista(props) {
+function ProductoLista({ producto, guardarRecargarProductos }) {
 
-    const { categoria , id, nombrePlatillo, precioPlatillo } = props.producto;
-    const { guardarRecargarProductos } = props.guardarRecargarProductos;
+    // const { categoria , id, nombrePlatillo, precioPlatillo } = props.producto;
+    // const { guardarRecargarProductos } = props.guardarRecargarProductos;
 
-    const eliminarProducto = async id => {
+    const eliminarProducto = id => {
         console.log('Eliminando...', id);
 
         // TODO: Eliminar los Registros
@@ -21,7 +21,7 @@ function ProductoLista(props) {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Si, Eliminar!',
             cancelButtonText : 'Cancelar'
-          }).then( async (result) => {
+        }).then( async (result) => {
 
             if (result.value) {
             
@@ -51,25 +51,25 @@ function ProductoLista(props) {
                     })
                 }
             }
-          })
+        })
     };
 
     return (
         <div>
-            <li data-categoria={categoria} className="list-group-item d-flex justify-content-between align-items-center">
+            <li data-categoria={producto.categoria} className="list-group-item d-flex justify-content-between align-items-center">
                 <p>
-                    {nombrePlatillo}
-                    <span className="font-weight-bold"> ${precioPlatillo}</span>
+                    {producto.nombrePlatillo}
+                    <span className="font-weight-bold"> ${producto.precioPlatillo}</span>
                 </p>
                 <div>
                     <Link 
-                            to={`/productos/editar/${id}`}
+                            to={`/productos/editar/${producto.id}`}
                             className="btn btn-success mr-2"
                     >Editar</Link>
                     <button
                             type="button"
                             className="btn btn-danger"
-                            onClick={ () => eliminarProducto(id) }
+                            onClick={ () => eliminarProducto(producto.id) }
                     >Eliminar &times;</button>
                 </div>
             </li>
