@@ -1,13 +1,7 @@
 {
   "restaurant": [
     {
-      "precioPlatillo": "150",
-      "nombrePlatillo": "Cheescake",
-      "categoria": "postre",
-      "id": 1
-    },
-    {
-      "precioPlatillo": "300",
+      "precioPlatillo": "350",
       "nombrePlatillo": "Rib Eye 250g",
       "categoria": "cortes",
       "id": 3
@@ -23,6 +17,12 @@
       "nombrePlatillo": "Agua de Frutas",
       "categoria": "bebida",
       "id": 5
+    },
+    {
+      "nombrePlatillo": "CheeseCake",
+      "precioPlatillo": "50",
+      "categoria": "postre",
+      "id": 6
     }
   ]
 }

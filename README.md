@@ -12,3 +12,8 @@ ReactJS: Aplicación CRUD con Routing
 
 ### sweetalert2
 '> npm install sweetalert2 --save
+
+## Lanzar aplicación 
+'> npm start' (Terminal 1)
+
+'> json-server db.json -p 4000' (Terminal 2)
